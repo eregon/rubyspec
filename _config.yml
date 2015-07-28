@@ -1,7 +1,7 @@
 # Site settings
 title: The new RubySpec blog
 description: A blog about ruby/rubyspec.
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/rubyspec"
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: eregontp
 github_username: eregon
