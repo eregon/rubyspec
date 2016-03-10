@@ -5,14 +5,14 @@ scenario = ARGV.shift
 ruby_exe = ARGV.shift
 
 # We must do this first otherwise there will be a race with the process that
-# creates this process and the TERM signal below could go to that process
+# creates this process and the SIGINT signal below could go to that process
 # instead, which will likely abort the specs process.
 Process.setsid if scenario && Process.respond_to?(:setsid)
 
 signaled = false
 mutex = Mutex.new
 
-Signal.trap(:TERM) do
+Signal.trap(:INT) do
   if mutex.try_lock
     unless signaled
       signaled = true
@@ -30,14 +30,14 @@ if scenario
 
   case scenario
   when "self"
-    signal = %["SIGTERM"]
+    signal = %["SIGINT"]
     process = "0"
   when "group_numeric"
-    signal = %[-Signal.list["TERM"]]
+    signal = %[-Signal.list["INT"]]
   when "group_short_string"
-    signal = %["-TERM"]
+    signal = %["-INT"]
   when "group_full_string"
-    signal = %["-SIGTERM"]
+    signal = %["-SIGINT"]
   end
 
   cmd = %[#{ruby_exe} -e 'Process.kill(#{signal}, #{process})']

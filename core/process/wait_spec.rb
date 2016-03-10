@@ -80,7 +80,7 @@ describe "Process.wait" do
       read, write = IO.pipe
       pid = Process.fork do
         read.close
-        Signal.trap("TERM") { Process.exit! }
+        Signal.trap("INT") { Process.exit! }
         write << 1
         write.close
         sleep
@@ -88,12 +88,12 @@ describe "Process.wait" do
 
       Process.wait(pid, Process::WNOHANG).should be_nil
 
-      # wait for the child to setup its TERM handler
+      # wait for the child to setup its SIGINT handler
       write.close
       read.read(1)
       read.close
 
-      Process.kill("TERM", pid)
+      Process.kill("INT", pid)
       Process.wait.should == pid
     end
 

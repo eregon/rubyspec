@@ -51,7 +51,7 @@ module ProcessSpecs
     def wait_on_result
       # Ensure the process exits
       begin
-        Process.kill :TERM, pid
+        Process.kill :INT, pid
       rescue Errno::ESRCH
         # Ignore the process not existing
       end

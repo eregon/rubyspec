@@ -26,28 +26,28 @@ describe "Process.kill" do
   end
 
   it "raises Errno::ESRCH if the process does not exist" do
-    Process.kill("SIGTERM", @sp.pid)
+    Process.kill("SIGINT", @sp.pid)
     @sp.result.should == "signaled"
-    lambda { Process.kill("SIGTERM", @sp.pid) }.should raise_error(Errno::ESRCH)
+    lambda { Process.kill("SIGINT", @sp.pid) }.should raise_error(Errno::ESRCH)
   end
 
   it "accepts a Symbol as a signal name" do
-    Process.kill(:SIGTERM, @sp.pid)
+    Process.kill(:SIGINT, @sp.pid)
     @sp.result.should == "signaled"
   end
 
   it "accepts a String as signal name" do
-    Process.kill("SIGTERM", @sp.pid)
+    Process.kill("SIGINT", @sp.pid)
     @sp.result.should == "signaled"
   end
 
   it "accepts a signal name without the 'SIG' prefix" do
-    Process.kill("TERM", @sp.pid)
+    Process.kill("INT", @sp.pid)
     @sp.result.should == "signaled"
   end
 
   it "accepts a signal name with the 'SIG' prefix" do
-    Process.kill("SIGTERM", @sp.pid)
+    Process.kill("SIGINT", @sp.pid)
     @sp.result.should == "signaled"
   end
 
@@ -57,7 +57,7 @@ describe "Process.kill" do
   end
 
   it "calls #to_int to coerce the pid to an Integer" do
-    Process.kill("SIGTERM", mock_int(@sp.pid))
+    Process.kill("SIGINT", mock_int(@sp.pid))
     @sp.result.should == "signaled"
   end
 end
@@ -74,13 +74,13 @@ describe "Process.kill" do
   end
 
   it "signals multiple processes" do
-    Process.kill("SIGTERM", @sp1.pid, @sp2.pid)
+    Process.kill("SIGINT", @sp1.pid, @sp2.pid)
     @sp1.result.should == "signaled"
     @sp2.result.should == "signaled"
   end
 
   it "returns the number of processes signaled" do
-    Process.kill("SIGTERM", @sp1.pid, @sp2.pid).should == 2
+    Process.kill("SIGINT", @sp1.pid, @sp2.pid).should == 2
   end
 end
 
