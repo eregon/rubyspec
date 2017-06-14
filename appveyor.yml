@@ -12,7 +12,7 @@ install:
 build: off
 test_script:
   - SET CHECK_LEAKS=true
-  - ../mspec/bin/mspec -ff :capi
+  - ../mspec/bin/mspec -fs -e rb_str_hash optional/capi/string_spec.rb
 branches:
   only:
     - master
