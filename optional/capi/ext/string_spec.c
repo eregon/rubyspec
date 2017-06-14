@@ -373,7 +373,7 @@ static VALUE string_spec_rb_str_hash(VALUE self, VALUE str) {
 #if SIZEOF_LONG == SIZEOF_VOIDP
   return LONG2FIX((long)val);
 #elif SIZEOF_LONG_LONG == SIZEOF_VOIDP
-  return LL2NUM((long long)val);
+  return LONG2FIX((long)val);
 #else
   return INT2FIX(0);
 #endif
