@@ -501,7 +501,17 @@ describe "C-API String function" do
   describe "rb_str_hash" do
     it "hashes the string into a number" do
       s = "hello"
-      @s.rb_str_hash(s).should == s.hash
+      a = @s.rb_str_hash(s)
+      b = s.hash
+      p [a, b]
+      p [a.class, b.class]
+      p [a.object_id, b.object_id]
+      p [a.object_id==b.object_id]
+      p [a==b]
+      p a.method :==
+      p a.method(:==).source_location
+      p [a==a,b==b,b==a]
+      a.should == b
     end
   end
 
