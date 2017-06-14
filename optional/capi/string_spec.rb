@@ -510,7 +510,9 @@ describe "C-API String function" do
       p [a==b]
       p a.method :==
       p a.method(:==).source_location
-      p [a==a,b==b,b==a]
+      p [a==a,b==b,b==a, a.send("#{'='*2}", b)]
+      p [a.eql?(b), b.eql?(a)]
+      p [s.hash==s.hash, @s.rb_str_hash(s)==@s.rb_str_hash(s)]
       a.should == b
     end
   end
