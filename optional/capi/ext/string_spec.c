@@ -362,6 +362,12 @@ VALUE string_spec_StringValue(VALUE self, VALUE str) {
 static VALUE string_spec_rb_str_hash(VALUE self, VALUE str) {
   st_index_t val = rb_str_hash(str);
 
+  printf("\nst_index_t %lu\n", val);
+  printf("long %lu\n", (long)val);
+  printf("l2fix2l %lu\n", FIX2LONG(LONG2FIX((long)val)));
+  printf("l2num2l %lu\n", NUM2LONG(LONG2NUM((long)val)));
+  printf("ul2num2ul %lu\n", NUM2ULONG(ULONG2NUM((long)val)));
+
 #if SIZEOF_LONG == SIZEOF_VOIDP || SIZEOF_LONG_LONG == SIZEOF_VOIDP
   return LONG2FIX((long)val);
 #else

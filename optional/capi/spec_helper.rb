@@ -17,7 +17,7 @@ def object_path
 end
 
 def compile_extension(name)
-  debug = false
+  debug = !false
   run_mkmf_in_process = RUBY_ENGINE == 'truffleruby'
 
   ext = "#{name}_spec"
