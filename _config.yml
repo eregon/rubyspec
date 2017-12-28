@@ -1,6 +1,6 @@
 # Site settings
-title: The new RubySpec blog
-description: A blog about ruby/rubyspec.
+title: The ruby/spec blog
+description: A blog about ruby/spec.
 baseurl: "/rubyspec"
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: eregontp
