@@ -4,7 +4,7 @@ title:  "RubySpec is Reborn!"
 ---
 
 ### TL;DR
-RubySpec is actively maintained at [ruby/rubyspec][rubyspec] and
+The Ruby Spec Suite is actively maintained at [ruby/spec][rubyspec] and
 [MRI][rubyci], [JRuby][jruby], [Opal][opal] and various individuals are contributing to it.
 Any contribution is welcome!
 
@@ -28,7 +28,7 @@ That fork has been maintained by MRI committers to pass on all supported MRI ver
 The first step was therefore to merge rubyspec/rubyspec with the MRI fork.
 
 [@anthonycrumley][anthonycrumley] started to fix many specs which were incompatible with MRI.
-[@nurse][nurse] and [@hsbt][hsbt] proposed to have the new repository at [ruby/rubyspec][rubyspec].
+[@nurse][nurse] and [@hsbt][hsbt] proposed to have the new repository at [ruby/spec][rubyspec].
 And finally [@eregon][eregon] made the actual merge (of 1426 commits!)
 and fixed the specs to run on all supported versions of MRI (2.0.0 -- trunk).
 
@@ -41,10 +41,10 @@ The goal of RubySpec is to define an accurate and runnable specification of the 
 This is a challenging task and really makes sense only if many implementations use it.
 
 JRuby has been using RubySpec for many years but needed a more efficient way to contribute back than a separate repository. The technical issues were solved and commits are now synchronized regularly in both directions.
-[JRuby+Truffle][jrubytruffle], a new backend for JRuby, is also extensively using RubySpec.
+[TruffleRuby][jrubytruffle], a new high-performance implementation of Ruby, is also extensively using RubySpec.
 
 Opal started using RubySpec and now passes thousands of specs examples.
-[@vais][vais] and [@elia][elia] have recently switched to ruby/rubyspec
+[@vais][vais] and [@elia][elia] have recently switched to ruby/spec
 and already contributed many commits.
 Opal is a particularly interesting implementation for RubySpec
 in that it tries to find the balance between mapping Ruby concepts to JavaScript and being more compatible.
@@ -80,7 +80,7 @@ describe "RubySpec.new" do
 end
 {% endhighlight %}
 
-[rubyspec]: https://github.com/ruby/rubyspec
+[rubyspec]: https://github.com/ruby/spec
 [brixen]: https://github.com/brixen
 [end-blog-post]: http://rubini.us/2014/12/31/matz-s-ruby-developers-don-t-use-rubyspec/
 [eregon]: https://github.com/eregon
@@ -92,9 +92,9 @@ end
 [headius]: https://github.com/headius
 [rubyci]: http://rubyci.org/
 [jruby]: http://jruby.org/
-[jrubytruffle]: https://github.com/jruby/jruby/wiki/Truffle
+[jrubytruffle]: https://github.com/graalvm/truffleruby
 [opal]: http://opalrb.org/
 [future-of-test-suites]: http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/67346
 [future-of-rubyspec]: https://github.com/rubinius/rubinius/issues/3403
-[CONTRIBUTING.md]: https://github.com/ruby/rubyspec/blob/master/CONTRIBUTING.md
-[issues]: https://github.com/ruby/rubyspec/issues
+[CONTRIBUTING.md]: https://github.com/ruby/spec/blob/master/CONTRIBUTING.md
+[issues]: https://github.com/ruby/spec/issues
