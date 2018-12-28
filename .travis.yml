@@ -4,6 +4,8 @@ install:
   - git clone https://github.com/ruby/mspec.git ../mspec
 script:
   - ../mspec/bin/mspec $MSPEC_OPTS
+env:
+  - CHECK_LEAKS=true
 matrix:
   include:
     - rvm: 2.6.0
@@ -11,9 +13,7 @@ matrix:
     - rvm: 2.3.8
     - rvm: 2.4.5
     - rvm: 2.5.3
-      env: CHECK_LEAKS=true
     - rvm: 2.6.0
-      env: CHECK_LEAKS=true
     - rvm: ruby-head
     - env: RUBOCOP=true
       rvm: 2.4.5
