@@ -296,14 +296,16 @@ describe "Operators" do
     -> { eval("1...2...3")  }.should raise_error(SyntaxError)
   end
 
- it ".. ... have higher precedence than ? :" do
-   # Use variables to avoid warnings
-   from = 1
-   to = 2
-   # These are flip-flop, not Range instances
-   (from..to ? 3 : 4).should == 3
-   (from...to ? 3 : 4).should == 3
- end
+  it ".. ... have higher precedence than ? :" do
+    # Use variables to avoid warnings
+    from = 1
+    to = 2
+    # These are flip-flop, not Range instances
+    suppress_warning do
+      (from..to ? 3 : 4).should == 3
+      (from...to ? 3 : 4).should == 3
+    end
+  end
 
   it "? : is right-associative" do
     (true ? 2 : 3 ? 4 : 5).should == 2
