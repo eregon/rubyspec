@@ -16,7 +16,6 @@ jobs:
         uses: MSP-Greg/actions-ruby@master
         with:
           ruby-version: ${{ matrix.ruby }}
-          base: update
       - name: Clone MSpec
         run: git clone https://github.com/ruby/mspec.git ../mspec
       - name: Run specs
