@@ -40,7 +40,7 @@ jobs:
         # Actions uses UTF8, causes test failures, similar to normal OS setup
         [Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding("IBM437")
         [Console]::InputEncoding  = [System.Text.Encoding]::GetEncoding("IBM437")
-        ../mspec/bin/mspec -j
+        ../mspec/bin/mspec
 
   rubocop:
     name: RuboCop
