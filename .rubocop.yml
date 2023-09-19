@@ -1,7 +1,7 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 80_82_73_83_77.33
   DisplayCopNames: true
   Exclude:
     - command_line/fixtures/bad_syntax.rb
