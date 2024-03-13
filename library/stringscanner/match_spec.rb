@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#match?" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the length of the match and the scan pointer is not advanced" do

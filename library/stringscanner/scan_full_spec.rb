@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#scan_full" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the number of bytes advanced" do

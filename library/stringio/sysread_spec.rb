@@ -34,7 +34,7 @@ end
 
 describe "StringIO#sysread when passed [length]" do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "raises an EOFError when self's position is at the end" do

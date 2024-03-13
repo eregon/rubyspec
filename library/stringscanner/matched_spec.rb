@@ -4,7 +4,7 @@ require 'strscan'
 
 describe "StringScanner#matched" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the last matched string" do
@@ -26,7 +26,7 @@ end
 
 describe "StringScanner#matched?" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns true if the last match was successful" do

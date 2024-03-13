@@ -1,4 +1,5 @@
 # -*- encoding: binary -*-
+# frozen_string_literal: false
 describe :string_codepoints, shared: true do
   it "returns self" do
     s = "foo"

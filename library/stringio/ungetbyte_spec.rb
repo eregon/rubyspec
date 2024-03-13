@@ -5,7 +5,7 @@ require 'stringio'
 describe "StringIO#ungetbyte" do
   it "ungets a single byte from a string starting with a single byte character" do
     str = 'This is a simple string.'
-    io = StringIO.new("#{str}")
+    io = StringIO.new(+"#{str}")
     c = io.getc
     c.should == 'T'
     io.ungetbyte(83)
@@ -23,7 +23,7 @@ describe "StringIO#ungetbyte" do
 
   it "constrains the value of a numeric argument to a single byte" do
     str = 'This is a simple string.'
-    io = StringIO.new("#{str}")
+    io = StringIO.new(+"#{str}")
     c = io.getc
     c.should == 'T'
     io.ungetbyte(83 | 0xff00)

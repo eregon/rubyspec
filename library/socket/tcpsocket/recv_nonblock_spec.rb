@@ -36,7 +36,7 @@ describe "TCPSocket#recv_nonblock" do
     #
     # TODO: Figure out a good way to test non-blocking.
     IO.select([@socket])
-    buffer = "".b
+    buffer = +"".b
     @socket.recv_nonblock(50, 0, buffer)
     buffer.should == 'TCPSocket#recv_nonblock'
   end

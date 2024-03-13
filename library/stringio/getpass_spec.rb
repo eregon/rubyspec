@@ -6,6 +6,6 @@ describe "StringIO#getpass" do
   require 'io/console'
 
   it "is defined by io/console" do
-    StringIO.new("example").should.respond_to?(:getpass)
+    StringIO.new(+"example").should.respond_to?(:getpass)
   end
 end

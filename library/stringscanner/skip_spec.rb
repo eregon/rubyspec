@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#skip" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns length of the match" do

@@ -4,7 +4,7 @@ require_relative 'fixtures/classes'
 
 describe "StringIO#readline when passed [separator]" do
   before :each do
-    @io = StringIO.new("this>is>an>example")
+    @io = StringIO.new(+"this>is>an>example")
   end
 
   it "returns the data read till the next occurrence of the passed separator" do
@@ -37,13 +37,13 @@ describe "StringIO#readline when passed [separator]" do
   end
 
   it "returns the next paragraph when the passed separator is an empty String" do
-    io = StringIO.new("this is\n\nan example")
+    io = StringIO.new(+"this is\n\nan example")
     io.readline("").should == "this is\n\n"
     io.readline("").should == "an example"
   end
 
   it "returns the remaining content starting at the current position when passed nil" do
-    io = StringIO.new("this is\n\nan example")
+    io = StringIO.new(+"this is\n\nan example")
     io.pos = 5
     io.readline(nil).should == "is\n\nan example"
   end
@@ -57,7 +57,7 @@ end
 
 describe "StringIO#readline when passed no argument" do
   before :each do
-    @io = StringIO.new("this is\nan example\nfor StringIO#readline")
+    @io = StringIO.new(+"this is\nan example\nfor StringIO#readline")
   end
 
   it "returns the data read till the next occurrence of $/ or till eof" do
@@ -113,10 +113,10 @@ end
 
 describe "StringIO#readline when in write-only mode" do
   it "raises an IOError" do
-    io = StringIO.new("xyz", "w")
+    io = StringIO.new(+"xyz", "w")
     -> { io.readline }.should raise_error(IOError)
 
-    io = StringIO.new("xyz")
+    io = StringIO.new(+"xyz")
     io.close_read
     -> { io.readline }.should raise_error(IOError)
   end
@@ -124,18 +124,18 @@ end
 
 describe "StringIO#readline when passed [chomp]" do
   it "returns the data read without a trailing newline character" do
-    io = StringIO.new("this>is>an>example\n")
+    io = StringIO.new(+"this>is>an>example\n")
     io.readline(chomp: true).should == "this>is>an>example"
   end
 end
 
 describe "StringIO#readline when passed [limit]" do
   before :each do
-    @io = StringIO.new("this>is>an>example")
+    @io = StringIO.new(+"this>is>an>example")
   end
 
   it "returns the data read until the limit is met" do
-    io = StringIO.new("this>is>an>example\n")
+    io = StringIO.new(+"this>is>an>example\n")
     io.readline(3).should == "thi"
   end
 

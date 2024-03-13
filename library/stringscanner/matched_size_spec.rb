@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#matched_size" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the size of the most recent match" do

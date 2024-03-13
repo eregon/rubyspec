@@ -87,15 +87,15 @@ describe "Hash#compare_by_identity" do
 
   # Behaviour confirmed in bug #1871
   it "persists over #dups" do
-    @idh['foo'] = :bar
-    @idh['foo'] = :glark
+    @idh['foo'.dup] = :bar
+    @idh['foo'.dup] = :glark
     @idh.dup.should == @idh
     @idh.dup.size.should == @idh.size
   end
 
   it "persists over #clones" do
-    @idh['foo'] = :bar
-    @idh['foo'] = :glark
+    @idh['foo'.dup] = :bar
+    @idh['foo'.dup] = :glark
     @idh.clone.should == @idh
     @idh.clone.size.should == @idh.size
   end
@@ -109,8 +109,8 @@ describe "Hash#compare_by_identity" do
   end
 
   it "gives different identity for string literals" do
-    @idh['foo'] = 1
-    @idh['foo'] = 2
+    @idh['foo'.dup] = 1
+    @idh['foo'.dup] = 2
     @idh.values.should == [1, 2]
     @idh.size.should == 2
   end

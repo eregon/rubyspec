@@ -7,7 +7,7 @@ describe "Net::HTTPGenericRequest#body_stream" do
     request = Net::HTTPGenericRequest.new("POST", true, true, "/some/path")
     request.body_stream.should be_nil
 
-    stream = StringIO.new("test")
+    stream = StringIO.new(+"test")
     request.body_stream = stream
     request.body_stream.should equal(stream)
   end
@@ -16,7 +16,7 @@ end
 describe "Net::HTTPGenericRequest#body_stream=" do
   before :each do
     @request = Net::HTTPGenericRequest.new("POST", true, true, "/some/path")
-    @stream = StringIO.new("test")
+    @stream = StringIO.new(+"test")
   end
 
   it "sets self's body stream to the passed Object" do

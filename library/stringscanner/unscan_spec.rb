@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#unscan" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "set the scan pointer to the previous position" do

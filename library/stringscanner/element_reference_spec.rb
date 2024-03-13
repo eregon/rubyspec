@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#[]" do
   before :each do
-    @s = StringScanner.new("Fri Jun 13 2008 22:43")
+    @s = StringScanner.new(+"Fri Jun 13 2008 22:43")
   end
 
   it "returns nil if there is no current match" do

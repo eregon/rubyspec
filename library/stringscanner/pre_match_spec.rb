@@ -4,7 +4,7 @@ require 'strscan'
 
 describe "StringScanner#pre_match" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the pre-match (in the regular expression sense) of the last scan" do

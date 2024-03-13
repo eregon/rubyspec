@@ -7,7 +7,7 @@ describe "StringScanner#getbyte" do
   it_behaves_like :strscan_get_byte, :getbyte
 
   it "warns in verbose mode that the method is obsolete" do
-    s = StringScanner.new("abc")
+    s = StringScanner.new(+"abc")
     -> {
       s.getbyte
     }.should complain(/getbyte.*obsolete.*get_byte/, verbose: true)

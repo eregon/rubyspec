@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#scan_until" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the substring up to and including the end of the match" do

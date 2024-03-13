@@ -4,7 +4,7 @@ require "stringio"
 
 describe "Net::HTTPGenericRequest#exec when passed socket, version, path" do
   before :each do
-    @socket = StringIO.new("")
+    @socket = StringIO.new(+"")
     @buffered_socket = Net::BufferedIO.new(@socket)
   end
 
@@ -65,7 +65,7 @@ describe "Net::HTTPGenericRequest#exec when passed socket, version, path" do
     it "sets the 'Content-Type' header to 'application/x-www-form-urlencoded' unless the 'Content-Type' header is supplied" do
       request = Net::HTTPGenericRequest.new("POST", true, true, "/some/path",
                                             "Content-Length" => "10")
-      request.body_stream = StringIO.new("a" * 20)
+      request.body_stream = StringIO.new(+"a" * 20)
 
       request.exec(@buffered_socket, "1.1", "/some/other/path")
       str = @socket.string
@@ -81,7 +81,7 @@ describe "Net::HTTPGenericRequest#exec when passed socket, version, path" do
       request = Net::HTTPGenericRequest.new("POST", true, true,"/some/path",
                                             "Content-Type" => "text/html",
                                             "Content-Length" => "10")
-      request.body_stream = StringIO.new("a" * 20)
+      request.body_stream = StringIO.new(+"a" * 20)
 
       request.exec(@buffered_socket, "1.1", "/some/other/path")
       str = @socket.string
@@ -98,7 +98,7 @@ describe "Net::HTTPGenericRequest#exec when passed socket, version, path" do
                                             "Content-Type" => "text/html",
                                             "Transfer-Encoding" => "chunked")
       datasize = 1024 * 10
-      request.body_stream = StringIO.new("a" * datasize)
+      request.body_stream = StringIO.new(+"a" * datasize)
 
       request.exec(@buffered_socket, "1.1", "/some/other/path")
       str = @socket.string
@@ -123,7 +123,7 @@ describe "Net::HTTPGenericRequest#exec when passed socket, version, path" do
     it "raises an ArgumentError when the 'Content-Length' is not set or 'Transfer-Encoding' is not set to 'chunked'" do
       request = Net::HTTPGenericRequest.new("POST", true, true, "/some/path",
                                             "Content-Type" => "text/html")
-      request.body_stream = StringIO.new("Some Content")
+      request.body_stream = StringIO.new(+"Some Content")
 
       -> { request.exec(@buffered_socket, "1.1", "/some/other/path") }.should raise_error(ArgumentError)
     end

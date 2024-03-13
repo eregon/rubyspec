@@ -1,7 +1,7 @@
 module IOWaitSpec
   def self.exhaust_write_buffer(io)
     written = 0
-    buf = " " * 4096
+    buf = +" " * 4096
 
     begin
       written += io.write_nonblock(buf)

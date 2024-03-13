@@ -1,6 +1,6 @@
 describe :stringio_each_separator, shared: true do
   before :each do
-    @io = StringIO.new("a b c d e\n1 2 3 4 5")
+    @io = StringIO.new(+"a b c d e\n1 2 3 4 5")
   end
 
   it "uses the passed argument as the line separator" do
@@ -30,7 +30,7 @@ describe :stringio_each_separator, shared: true do
 
   it "yields self's content starting from the current position when the passed separator is nil" do
     seen = []
-    io = StringIO.new("1 2 1 2 1 2")
+    io = StringIO.new(+"1 2 1 2 1 2")
     io.pos = 2
     io.send(@method, nil) {|s| seen << s}
     seen.should == ["2 1 2 1 2"]
@@ -39,7 +39,7 @@ describe :stringio_each_separator, shared: true do
   version_is StringIO::VERSION, ""..."3.0.4" do #ruby_version_is ""..."3.2" do
     it "yields each paragraph with two separation characters when passed an empty String as separator" do
       seen = []
-      io = StringIO.new("para1\n\npara2\n\n\npara3")
+      io = StringIO.new(+"para1\n\npara2\n\n\npara3")
       io.send(@method, "") {|s| seen << s}
       seen.should == ["para1\n\n", "para2\n\n", "para3"]
     end
@@ -48,7 +48,7 @@ describe :stringio_each_separator, shared: true do
   version_is StringIO::VERSION, "3.0.4" do #ruby_version_is "3.2" do
     it "yields each paragraph with all separation characters when passed an empty String as separator" do
       seen = []
-      io = StringIO.new("para1\n\npara2\n\n\npara3")
+      io = StringIO.new(+"para1\n\npara2\n\n\npara3")
       io.send(@method, "") {|s| seen << s}
       seen.should == ["para1\n\n", "para2\n\n\n", "para3"]
     end
@@ -57,7 +57,7 @@ end
 
 describe :stringio_each_no_arguments, shared: true do
   before :each do
-    @io = StringIO.new("a b c d e\n1 2 3 4 5")
+    @io = StringIO.new(+"a b c d e\n1 2 3 4 5")
   end
 
   it "yields each line to the passed block" do
@@ -107,10 +107,10 @@ end
 
 describe :stringio_each_not_readable, shared: true do
   it "raises an IOError" do
-    io = StringIO.new("a b c d e", "w")
+    io = StringIO.new(+"a b c d e", "w")
     -> { io.send(@method) { |b| b } }.should raise_error(IOError)
 
-    io = StringIO.new("a b c d e")
+    io = StringIO.new(+"a b c d e")
     io.close_read
     -> { io.send(@method) { |b| b } }.should raise_error(IOError)
   end
@@ -119,14 +119,14 @@ end
 describe :stringio_each_chomp, shared: true do
   it "yields each line with removed newline characters to the passed block" do
     seen = []
-    io = StringIO.new("a b \rc d e\n1 2 3 4 5\r\nthe end")
+    io = StringIO.new(+"a b \rc d e\n1 2 3 4 5\r\nthe end")
     io.send(@method, chomp: true) {|s| seen << s }
     seen.should == ["a b \rc d e", "1 2 3 4 5", "the end"]
   end
 
   it "returns each line with removed newline characters when called without block" do
     seen = []
-    io = StringIO.new("a b \rc d e\n1 2 3 4 5\r\nthe end")
+    io = StringIO.new(+"a b \rc d e\n1 2 3 4 5\r\nthe end")
     enum = io.send(@method, chomp: true)
     enum.each {|s| seen << s }
     seen.should == ["a b \rc d e", "1 2 3 4 5", "the end"]
@@ -136,14 +136,14 @@ end
 describe :stringio_each_separator_and_chomp, shared: true do
   it "yields each line with removed separator to the passed block" do
     seen = []
-    io = StringIO.new("a b \nc d e|1 2 3 4 5\n|the end")
+    io = StringIO.new(+"a b \nc d e|1 2 3 4 5\n|the end")
     io.send(@method, "|", chomp: true) {|s| seen << s }
     seen.should == ["a b \nc d e", "1 2 3 4 5\n", "the end"]
   end
 
   it "returns each line with removed separator when called without block" do
     seen = []
-    io = StringIO.new("a b \nc d e|1 2 3 4 5\n|the end")
+    io = StringIO.new(+"a b \nc d e|1 2 3 4 5\n|the end")
     enum = io.send(@method, "|", chomp: true)
     enum.each {|s| seen << s }
     seen.should == ["a b \nc d e", "1 2 3 4 5\n", "the end"]
@@ -152,7 +152,7 @@ end
 
 describe :stringio_each_limit, shared: true do
   before :each do
-    @io = StringIO.new("a b c d e\n1 2 3 4 5")
+    @io = StringIO.new(+"a b c d e\n1 2 3 4 5")
   end
 
   it "returns the data read until the limit is met" do

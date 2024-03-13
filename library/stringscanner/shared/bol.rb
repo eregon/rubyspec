@@ -1,13 +1,13 @@
 describe :strscan_bol, shared: true do
   it "returns true if the scan pointer is at the beginning of the line, false otherwise" do
-    s = StringScanner.new("This is a test")
+    s = StringScanner.new(+"This is a test")
     s.send(@method).should be_true
     s.scan(/This/)
     s.send(@method).should be_false
     s.terminate
     s.send(@method).should be_false
 
-    s = StringScanner.new("hello\nworld")
+    s = StringScanner.new(+"hello\nworld")
     s.bol?.should be_true
     s.scan(/\w+/)
     s.bol?.should be_false

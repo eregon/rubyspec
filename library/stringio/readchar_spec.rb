@@ -6,7 +6,7 @@ describe "StringIO#readchar" do
   it_behaves_like :stringio_readchar, :readchar
 
   it "reads the next 8-bit byte from self's current position" do
-    io = StringIO.new("example")
+    io = StringIO.new(+"example")
 
     io.readchar.should == ?e
 

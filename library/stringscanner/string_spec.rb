@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#string" do
   before :each do
-    @string = "This is a test"
+    @string = +"This is a test"
     @s = StringScanner.new(@string)
   end
 
@@ -20,7 +20,7 @@ end
 
 describe "StringScanner#string=" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "changes the string being scanned to the argument and resets the scanner" do

@@ -10,7 +10,7 @@ describe :strscan_get_byte, shared: true do
   end
 
   it "is not multi-byte character sensitive" do
-    s = StringScanner.new("\244\242")
+    s = StringScanner.new(+"\244\242")
     s.send(@method).should == "\244"
     s.send(@method).should == "\242"
   end

@@ -1,6 +1,6 @@
 describe :stringio_sysread_length, shared: true do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "returns an empty String when passed 0 and no data remains" do

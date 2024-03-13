@@ -3,7 +3,7 @@ require_relative 'fixtures/classes'
 
 describe "StringIO#close_read" do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "returns nil" do
@@ -21,10 +21,10 @@ describe "StringIO#close_read" do
   end
 
   it "raises an IOError when in write-only mode" do
-    io = StringIO.new("example", "w")
+    io = StringIO.new(+"example", "w")
     -> { io.close_read }.should raise_error(IOError)
 
-    io = StringIO.new("example")
+    io = StringIO.new(+"example")
     io.close_read
     io.close_read.should == nil
   end

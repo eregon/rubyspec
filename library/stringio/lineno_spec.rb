@@ -3,7 +3,7 @@ require "stringio"
 
 describe "StringIO#lineno" do
   before :each do
-    @io = StringIO.new("this\nis\nan\nexample")
+    @io = StringIO.new(+"this\nis\nan\nexample")
   end
 
   it "returns the number of lines read" do
@@ -16,7 +16,7 @@ end
 
 describe "StringIO#lineno=" do
   before :each do
-    @io = StringIO.new("this\nis\nan\nexample")
+    @io = StringIO.new(+"this\nis\nan\nexample")
   end
 
   it "sets the current line number, but has no impact on the position" do

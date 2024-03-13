@@ -1,6 +1,6 @@
 describe :strscan_pos, shared: true do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the position of the scan pointer" do
@@ -26,7 +26,7 @@ end
 
 describe :strscan_pos_set, shared: true do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "modify the scan pointer" do

@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#check" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the value that scan would return, without advancing the scan pointer" do

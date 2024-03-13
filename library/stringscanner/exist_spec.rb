@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#exist?" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the index of the first occurrence of the given pattern" do

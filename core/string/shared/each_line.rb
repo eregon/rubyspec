@@ -1,3 +1,4 @@
+# frozen_string_literal: false
 describe :string_each_line, shared: true do
   it "splits using default newline separator when none is specified" do
     a = []

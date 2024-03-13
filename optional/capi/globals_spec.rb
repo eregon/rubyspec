@@ -266,7 +266,7 @@ describe "CApiGlobalSpecs" do
 
   describe "rb_lastline_get" do
     before do
-      @io = StringIO.new("last line")
+      @io = StringIO.new(+"last line")
     end
 
     it "gets the value of $_" do

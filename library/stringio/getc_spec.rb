@@ -6,7 +6,7 @@ describe "StringIO#getc" do
   it_behaves_like :stringio_getc, :getc
 
   it "returns the character at the current position" do
-    io = StringIO.new("example")
+    io = StringIO.new(+"example")
 
     io.getc.should == ?e
     io.getc.should == ?x

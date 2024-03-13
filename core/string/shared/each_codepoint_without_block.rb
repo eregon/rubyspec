@@ -1,4 +1,5 @@
 # -*- encoding: binary -*-
+# frozen_string_literal: false
 describe :string_each_codepoint_without_block, shared: true do
   describe "when no block is given" do
     it "returns an Enumerator" do

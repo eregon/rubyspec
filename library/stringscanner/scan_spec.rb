@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#scan" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the matched string" do
@@ -64,7 +64,7 @@ end
 
 describe "StringScanner#scan with fixed_anchor: true" do
   before :each do
-    @s = StringScanner.new("This\nis\na\ntest", fixed_anchor: true)
+    @s = StringScanner.new(+"This\nis\na\ntest", fixed_anchor: true)
   end
 
   it "returns the matched string" do

@@ -34,7 +34,7 @@ end
 
 describe "StringIO#read when passed [length]" do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "returns nil when self's position is at the end" do
@@ -49,11 +49,11 @@ end
 
 describe "StringIO#read when passed length and a buffer" do
   before :each do
-    @io = StringIO.new("abcdefghijklmnopqrstuvwxyz")
+    @io = StringIO.new(+"abcdefghijklmnopqrstuvwxyz")
   end
 
   it "reads [length] characters into the buffer" do
-    buf = "foo"
+    buf = +"foo"
     result = @io.read(10, buf)
 
     buf.should == "abcdefghij"

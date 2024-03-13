@@ -3,7 +3,7 @@ require_relative 'fixtures/classes'
 
 describe "StringIO#rewind" do
   before :each do
-    @io = StringIO.new("hello\nworld")
+    @io = StringIO.new(+"hello\nworld")
     @io.pos = 3
     @io.lineno = 1
   end

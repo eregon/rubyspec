@@ -1,6 +1,6 @@
 describe :stringio_eof, shared: true do
   before :each do
-    @io = StringIO.new("eof")
+    @io = StringIO.new(+"eof")
   end
 
   it "returns true when self's position is greater than or equal to self's size" do

@@ -45,9 +45,9 @@ describe "Complex#to_s" do
 
   it "treats real and imaginary parts as strings" do
     real = NumericSpecs::Subclass.new
-    real.should_receive(:to_s).and_return("1")
+    real.should_receive(:to_s).and_return(+"1")
     imaginary = NumericSpecs::Subclass.new
-    imaginary.should_receive(:to_s).and_return("2")
+    imaginary.should_receive(:to_s).and_return(+"2")
     imaginary.should_receive(:<).any_number_of_times.and_return(false)
     Complex(real, imaginary).to_s.should == "1+2i"
   end

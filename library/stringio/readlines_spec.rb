@@ -3,7 +3,7 @@ require_relative 'fixtures/classes'
 
 describe "StringIO#readlines when passed [separator]" do
   before :each do
-    @io = StringIO.new("this>is>an>example")
+    @io = StringIO.new(+"this>is>an>example")
   end
 
   it "returns an Array containing lines based on the passed separator" do
@@ -27,12 +27,12 @@ describe "StringIO#readlines when passed [separator]" do
   end
 
   it "returns an Array containing all paragraphs when the passed separator is an empty String" do
-    io = StringIO.new("this is\n\nan example")
+    io = StringIO.new(+"this is\n\nan example")
     io.readlines("").should == ["this is\n\n", "an example"]
   end
 
   it "returns the remaining content as one line starting at the current position when passed nil" do
-    io = StringIO.new("this is\n\nan example")
+    io = StringIO.new(+"this is\n\nan example")
     io.pos = 5
     io.readlines(nil).should == ["is\n\nan example"]
   end
@@ -46,7 +46,7 @@ end
 
 describe "StringIO#readlines when passed no argument" do
   before :each do
-    @io = StringIO.new("this is\nan example\nfor StringIO#readlines")
+    @io = StringIO.new(+"this is\nan example\nfor StringIO#readlines")
   end
 
   it "returns an Array containing lines based on $/" do
@@ -83,10 +83,10 @@ end
 
 describe "StringIO#readlines when in write-only mode" do
   it "raises an IOError" do
-    io = StringIO.new("xyz", "w")
+    io = StringIO.new(+"xyz", "w")
     -> { io.readlines }.should raise_error(IOError)
 
-    io = StringIO.new("xyz")
+    io = StringIO.new(+"xyz")
     io.close_read
     -> { io.readlines }.should raise_error(IOError)
   end
@@ -94,14 +94,14 @@ end
 
 describe "StringIO#readlines when passed [chomp]" do
   it "returns the data read without a trailing newline character" do
-    io = StringIO.new("this>is\nan>example\r\n")
+    io = StringIO.new(+"this>is\nan>example\r\n")
     io.readlines(chomp: true).should == ["this>is", "an>example"]
   end
 end
 
 describe "StringIO#readlines when passed [limit]" do
   before :each do
-    @io = StringIO.new("a b c d e\n1 2 3 4 5")
+    @io = StringIO.new(+"a b c d e\n1 2 3 4 5")
   end
 
   it "returns the data read until the limit is met" do

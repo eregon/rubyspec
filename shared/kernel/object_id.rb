@@ -52,10 +52,18 @@ describe :object_id, shared: true do
     o1.send(@method).should_not == o2.send(@method)
   end
 
-  it "returns a different value for two String literals" do
-    o1 = "hello"
-    o2 = "hello"
-    o1.send(@method).should_not == o2.send(@method)
+  if "test".frozen? # frozen_string_literal is enabled
+    it "returns the same value for two identical String literals" do
+      o1 = "hello"
+      o2 = "hello"
+      o1.send(@method).should == o2.send(@method)
+    end
+  else
+    it "returns a different value for two String literals" do
+      o1 = "hello"
+      o2 = "hello"
+      o1.send(@method).should_not == o2.send(@method)
+    end
   end
 
   it "returns a different value for an object and its dup" do

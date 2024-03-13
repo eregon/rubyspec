@@ -1,6 +1,6 @@
 describe :strscan_eos, shared: true do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns true if the scan pointer is at the end of the string" do

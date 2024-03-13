@@ -3,7 +3,7 @@ require "stringio"
 
 describe "StringIO#gets when passed [separator]" do
   before :each do
-    @io = StringIO.new("this>is>an>example")
+    @io = StringIO.new(+"this>is>an>example")
   end
 
   it "returns the data read till the next occurrence of the passed separator" do
@@ -49,13 +49,13 @@ describe "StringIO#gets when passed [separator]" do
   end
 
   it "returns the next paragraph when the passed separator is an empty String" do
-    io = StringIO.new("this is\n\nan example")
+    io = StringIO.new(+"this is\n\nan example")
     io.gets("").should == "this is\n\n"
     io.gets("").should == "an example"
   end
 
   it "returns the remaining content starting at the current position when passed nil" do
-    io = StringIO.new("this is\n\nan example")
+    io = StringIO.new(+"this is\n\nan example")
     io.pos = 5
     io.gets(nil).should == "is\n\nan example"
   end
@@ -69,7 +69,7 @@ end
 
 describe "StringIO#gets when passed no argument" do
   before :each do
-    @io = StringIO.new("this is\nan example\nfor StringIO#gets")
+    @io = StringIO.new(+"this is\nan example\nfor StringIO#gets")
   end
 
   it "returns the data read till the next occurrence of $/ or till eof" do
@@ -128,7 +128,7 @@ end
 
 describe "StringIO#gets when passed [limit]" do
   before :each do
-    @io = StringIO.new("this>is>an>example")
+    @io = StringIO.new(+"this>is>an>example")
   end
 
   it "returns the data read until the limit is met" do
@@ -179,7 +179,7 @@ end
 
 describe "StringIO#gets when passed [separator] and [limit]" do
   before :each do
-    @io = StringIO.new("this>is>an>example")
+    @io = StringIO.new(+"this>is>an>example")
   end
 
   it "returns the data read until the limit is consumed or the separator is met" do
@@ -233,10 +233,10 @@ end
 
 describe "StringIO#gets when in write-only mode" do
   it "raises an IOError" do
-    io = StringIO.new("xyz", "w")
+    io = StringIO.new(+"xyz", "w")
     -> { io.gets }.should raise_error(IOError)
 
-    io = StringIO.new("xyz")
+    io = StringIO.new(+"xyz")
     io.close_read
     -> { io.gets }.should raise_error(IOError)
   end
@@ -244,7 +244,7 @@ end
 
 describe "StringIO#gets when passed [chomp]" do
   it "returns the data read without a trailing newline character" do
-    io = StringIO.new("this>is>an>example\n")
+    io = StringIO.new(+"this>is>an>example\n")
     io.gets(chomp: true).should == "this>is>an>example"
   end
 end

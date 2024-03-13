@@ -1,4 +1,5 @@
 # -*- encoding: us-ascii -*-
+# frozen_string_literal: false
 require_relative '../../spec_helper'
 require_relative 'fixtures/iso-8859-9-encoding'
 

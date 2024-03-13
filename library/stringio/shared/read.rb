@@ -1,23 +1,23 @@
 describe :stringio_read, shared: true do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "returns the passed buffer String" do
     # Note: Rubinius bug:
-    # @io.send(@method, 7, buffer = "").should equal(buffer)
-    ret = @io.send(@method, 7, buffer = "")
+    # @io.send(@method, 7, buffer = +"").should equal(buffer)
+    ret = @io.send(@method, 7, buffer = +"")
     ret.should equal(buffer)
   end
 
   it "reads length bytes and writes them to the buffer String" do
-    @io.send(@method, 7, buffer = "")
+    @io.send(@method, 7, buffer = +"")
     buffer.should == "example"
   end
 
   it "tries to convert the passed buffer Object to a String using #to_str" do
     obj = mock("to_str")
-    obj.should_receive(:to_str).and_return(buffer = "")
+    obj.should_receive(:to_str).and_return(buffer = +"")
 
     @io.send(@method, 7, obj)
     buffer.should == "example"
@@ -34,7 +34,7 @@ end
 
 describe :stringio_read_length, shared: true do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "reads length bytes from the current position and returns them" do
@@ -75,7 +75,7 @@ end
 
 describe :stringio_read_no_arguments, shared: true do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "reads the whole content starting from the current position" do
@@ -99,7 +99,7 @@ end
 
 describe :stringio_read_nil, shared: true do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
   end
 
   it "returns the remaining content from the current position" do
@@ -117,10 +117,10 @@ end
 
 describe :stringio_read_not_readable, shared: true do
   it "raises an IOError" do
-    io = StringIO.new("test", "w")
+    io = StringIO.new(+"test", "w")
     -> { io.send(@method) }.should raise_error(IOError)
 
-    io = StringIO.new("test")
+    io = StringIO.new(+"test")
     io.close_read
     -> { io.send(@method) }.should raise_error(IOError)
   end

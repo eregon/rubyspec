@@ -10,7 +10,7 @@ describe :strscan_peek, shared: true do
     @s.send(@method, 2).should == "is"
     @s.send(@method, 1000).should == "is a test"
 
-    s = StringScanner.new("été")
+    s = StringScanner.new(+"été")
     s.send(@method, 2).should == "é"
   end
 

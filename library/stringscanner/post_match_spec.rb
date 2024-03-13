@@ -4,7 +4,7 @@ require 'strscan'
 
 describe "StringScanner#post_match" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the post-match (in the regular expression sense) of the last scan" do

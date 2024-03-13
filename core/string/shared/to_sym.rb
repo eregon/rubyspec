@@ -1,3 +1,4 @@
+# frozen_string_literal: false
 describe :string_to_sym, shared: true do
   it "returns the symbol corresponding to self" do
     "Koala".send(@method).should equal :Koala

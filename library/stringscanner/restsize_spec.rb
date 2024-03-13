@@ -6,7 +6,7 @@ describe "StringScanner#restsize" do
   it_behaves_like :strscan_rest_size, :restsize
 
   it "warns in verbose mode that the method is obsolete" do
-    s = StringScanner.new("abc")
+    s = StringScanner.new(+"abc")
     -> {
       s.restsize
     }.should complain(/restsize.*obsolete.*rest_size/, verbose: true)

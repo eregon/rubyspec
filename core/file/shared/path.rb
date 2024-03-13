@@ -1,6 +1,6 @@
 describe :file_path, shared: true do
   before :each do
-    @name = "file_to_path"
+    @name = +"file_to_path"
     @path = tmp(@name)
     touch @path
   end

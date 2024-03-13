@@ -1,4 +1,5 @@
 # -*- encoding: binary -*-
+# frozen_string_literal: false
 describe :string_succ, shared: true do
   it "returns an empty string for empty strings" do
     "".send(@method).should == ""

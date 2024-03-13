@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#skip_until" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the number of bytes advanced and advances the scan pointer until pattern is matched and consumed" do

@@ -1,3 +1,4 @@
+# frozen_string_literal: false
 describe :string_slice, shared: true do
   it "returns the character code of the character at the given index" do
     "hello".send(@method, 0).should == ?h

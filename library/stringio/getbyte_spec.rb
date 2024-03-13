@@ -6,7 +6,7 @@ describe "StringIO#getbyte" do
   it_behaves_like :stringio_getc, :getbyte
 
   it "returns the 8-bit byte at the current position" do
-    io = StringIO.new("example")
+    io = StringIO.new(+"example")
 
     io.getbyte.should == 101
     io.getbyte.should == 120

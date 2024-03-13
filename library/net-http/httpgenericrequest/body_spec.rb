@@ -23,7 +23,7 @@ describe "Net::HTTPGenericRequest#body=" do
   end
 
   it "sets self's body stream to nil" do
-    @request.body_stream = StringIO.new("")
+    @request.body_stream = StringIO.new(+"")
     @request.body = "Some Content"
     @request.body_stream.should be_nil
   end

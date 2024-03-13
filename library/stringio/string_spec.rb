@@ -10,7 +10,7 @@ end
 
 describe "StringIO#string=" do
   before :each do
-    @io = StringIO.new("example\nstring")
+    @io = StringIO.new(+"example\nstring")
   end
 
   it "returns the passed String" do

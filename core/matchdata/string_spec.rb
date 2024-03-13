@@ -18,7 +18,7 @@ describe "MatchData#string" do
   end
 
   it "returns a frozen copy of the matched string for gsub(String)" do
-    'he[[o'.gsub!('[', ']')
+    'he[[o'.dup.gsub!('[', ']')
     $~.string.should == 'he[[o'
     $~.string.should.frozen?
   end

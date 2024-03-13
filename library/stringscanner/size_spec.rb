@@ -3,7 +3,7 @@ require 'strscan'
 
 describe "StringScanner#size" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the number of captures groups of the last match" do

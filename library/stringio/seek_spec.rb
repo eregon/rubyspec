@@ -3,7 +3,7 @@ require_relative 'fixtures/classes'
 
 describe "StringIO#seek" do
   before :each do
-    @io = StringIO.new("12345678")
+    @io = StringIO.new(+"12345678")
   end
 
   it "seeks from the current position when whence is IO::SEEK_CUR" do
@@ -57,7 +57,7 @@ end
 
 describe "StringIO#seek when self is closed" do
   before :each do
-    @io = StringIO.new("example")
+    @io = StringIO.new(+"example")
     @io.close
   end
 

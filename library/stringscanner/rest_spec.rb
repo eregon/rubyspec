@@ -4,7 +4,7 @@ require 'strscan'
 
 describe "StringScanner#rest" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns the rest of the string" do
@@ -28,7 +28,7 @@ end
 
 describe "StringScanner#rest?" do
   before :each do
-    @s = StringScanner.new("This is a test")
+    @s = StringScanner.new(+"This is a test")
   end
 
   it "returns true if there is more data in the string" do
