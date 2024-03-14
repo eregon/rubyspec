@@ -1,4 +1,3 @@
-# frozen_string_literal: false
 require_relative '../../../spec_helper'
 
 describe "Encoding::Converter#finish" do
@@ -17,8 +16,8 @@ describe "Encoding::Converter#finish" do
   end
 
   it "returns the last part of the converted String if it hasn't already" do
-     @ec.convert("\u{9999}").should == "\e$B9a".force_encoding('iso-2022-jp')
-     @ec.finish.should == "\e(B".force_encoding('iso-2022-jp')
+     @ec.convert("\u{9999}").should == "\e$B9a".dup.force_encoding('iso-2022-jp')
+     @ec.finish.should == "\e(B".dup.force_encoding('iso-2022-jp')
   end
 
   it "returns a String in the destination encoding" do

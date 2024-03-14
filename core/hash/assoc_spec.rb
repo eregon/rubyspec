@@ -22,7 +22,7 @@ describe "Hash#assoc" do
   end
 
   it "only returns the first matching key-value pair for identity hashes" do
-    # Avoid literal String keys in Hash#[]= due to https://bugs.ruby-lang.org/issues/12855
+    # Avoid literal String keys since string literals can be frozen and interned e.g. with --enable-frozen-string-literal
     h = {}.compare_by_identity
     k1 = 'pear'.dup
     h[k1] = :red

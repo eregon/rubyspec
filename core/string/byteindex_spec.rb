@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-# frozen_string_literal: false
 require_relative '../../spec_helper'
 require_relative 'fixtures/classes'
 require_relative 'shared/byte_index_common.rb'
@@ -157,11 +156,11 @@ describe "String#byteindex with String" do
     end
 
     it "handles a substring in a superset encoding" do
-      'abc'.force_encoding(Encoding::US_ASCII).byteindex('é').should == nil
+      'abc'.dup.force_encoding(Encoding::US_ASCII).byteindex('é').should == nil
     end
 
     it "handles a substring in a subset encoding" do
-      'été'.byteindex('t'.force_encoding(Encoding::US_ASCII)).should == 2
+      'été'.byteindex('t'.dup.force_encoding(Encoding::US_ASCII)).should == 2
     end
   end
 end

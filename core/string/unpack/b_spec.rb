@@ -1,5 +1,4 @@
 # -*- encoding: binary -*-
-# frozen_string_literal: false
 require_relative '../../../spec_helper'
 require_relative '../fixtures/classes'
 require_relative 'shared/basic'
@@ -108,7 +107,7 @@ describe "String#unpack with format 'B'" do
   end
 
   it "decodes into US-ASCII string values" do
-    str = "s".force_encoding('UTF-8').unpack("B*")[0]
+    str = "s".dup.force_encoding('UTF-8').unpack("B*")[0]
     str.encoding.name.should == 'US-ASCII'
   end
 end
@@ -216,7 +215,7 @@ describe "String#unpack with format 'b'" do
   end
 
   it "decodes into US-ASCII string values" do
-    str = "s".force_encoding('UTF-8').unpack("b*")[0]
+    str = "s".dup.force_encoding('UTF-8').unpack("b*")[0]
     str.encoding.name.should == 'US-ASCII'
   end
 end

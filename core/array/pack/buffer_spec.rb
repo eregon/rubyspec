@@ -5,7 +5,7 @@ require_relative '../../../spec_helper'
 describe "Array#pack with :buffer option" do
   it "returns specified buffer" do
     n = [ 65, 66, 67 ]
-    buffer = +" "*3
+    buffer = " "*3
     result = n.pack("ccc", buffer: buffer)      #=> "ABC"
     result.should equal(buffer)
   end

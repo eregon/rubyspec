@@ -1,4 +1,3 @@
-# frozen_string_literal: false
 require_relative '../../../spec_helper'
 
 describe "Encoding::Converter.asciicompat_encoding" do

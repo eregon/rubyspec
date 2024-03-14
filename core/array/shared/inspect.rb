@@ -99,7 +99,7 @@ describe :array_inspect, shared: true do
 
     it "does not raise if inspected result is not default external encoding" do
       utf_16be = mock(+"utf_16be")
-      utf_16be.should_receive(:inspect).and_return(%<"utf_16be \u3042">.dup.encode!(Encoding::UTF_16BE))
+      utf_16be.should_receive(:inspect).and_return(%<"utf_16be \u3042">.encode(Encoding::UTF_16BE))
 
       [utf_16be].send(@method).should == '["utf_16be \u3042"]'
     end

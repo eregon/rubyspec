@@ -1,5 +1,4 @@
 # -*- encoding: binary -*-
-# frozen_string_literal: false
 require_relative '../../../spec_helper'
 
 describe "Encoding::Converter.new" do
@@ -108,7 +107,7 @@ describe "Encoding::Converter.new" do
 
       it "sets the replacement String to '\\uFFFD'" do
         conv = Encoding::Converter.new("us-ascii", "utf-8", replace: nil)
-        conv.replacement.should == "\u{fffd}".force_encoding("utf-8")
+        conv.replacement.should == "\u{fffd}".dup.force_encoding("utf-8")
       end
 
       it "sets the replacement String encoding to UTF-8" do
